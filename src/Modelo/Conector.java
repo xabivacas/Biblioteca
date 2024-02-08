@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Conector {
 
-	protected Connection cn;
+	protected static  Connection cn;
 	 
 	public void conectar() {
 		try {
