@@ -23,6 +23,7 @@ public class GestorBBDD extends Conector {
 		String sql= "SELECT * FROM libros";
 		
 		try {
+			Conector.conectar();
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			

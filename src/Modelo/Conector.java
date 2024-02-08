@@ -6,13 +6,17 @@ import java.sql.SQLException;
 
 public class Conector {
 
-	protected static  Connection cn;
-	 
-	public void conectar() {
+	public static  Connection cn;
+	private static final String HOST="localhost";
+	private static final String BBDD="biblioteca2";
+	private static final String USER="root";
+	private static final String PASSWORD="";
+	
+	public static void conectar() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/biblioteca";
-			cn = (Connection) DriverManager.getConnection(url,"root","");
+			cn = DriverManager.getConnection("jdbc:mysql://"+HOST+"/"+BBDD,USER,PASSWORD);
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al importar Driver");
