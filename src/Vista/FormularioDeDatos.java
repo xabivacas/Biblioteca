@@ -2,6 +2,8 @@ package Vista;
 
 import java.util.Scanner;
 
+import Modelo.Libro;
+
 public class FormularioDeDatos {
 	
 	private static Scanner scan = new Scanner(System.in);

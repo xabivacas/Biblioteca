@@ -1,6 +1,7 @@
 package controlador;
 
 import java.util.Scanner;
+import Vista.*;
 
 public class GestorBiblioteca {
 	
