@@ -16,6 +16,7 @@ public class GestorBBDD extends Conector {
 			
 			pst.execute();
 		} catch (SQLException e) {
+			System.out.println("Peto en insertarLibro");
 			e.printStackTrace();
 		}
 		
@@ -30,14 +31,36 @@ public class GestorBBDD extends Conector {
 			pst.execute();
 			
 		} catch (SQLException e) {
+			System.out.println("Peto en eliminarLibro");
 			e.printStackTrace();
 		}
 		
 		
 	}
+	
 	public Libro getLibro(int id) {
-		//TODO
-		return null;
+		Libro libro = new Libro();
+		String sql= "SELECT * FROM libros WHERE id=?";
+		
+		
+		try {
+			PreparedStatement pst = cn.prepareStatement(sql);
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			rs.next();
+			libro.setId(rs.getInt("id"));
+			libro.setTitulo(rs.getString("titulo"));
+			libro.setAutor(rs.getString("autor"));
+			libro.setNum_pag(rs.getInt("num_pag"));
+				
+			
+		} catch (SQLException e) {
+			System.out.println("Peto en getLibro");
+			e.printStackTrace();
+		}
+		return libro;
 		
 	}
 	
@@ -66,5 +89,25 @@ public class GestorBBDD extends Conector {
 		}
 		
 		return libros;
+	}
+	
+	public void modificarLibro(int id,Libro l) {
+		String sql ="UPDATE libros SET titulo=?,autor=?,num_pag=? WHERE id=?";
+		
+		try {
+			PreparedStatement pst = cn.prepareStatement(sql);
+			pst.setString(1, l.getTitulo());
+			pst.setString(2, l.getAutor());
+			pst.setInt(3, l.getNum_pag());
+			pst.setInt(4, id);
+			
+			pst.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarLibro");
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

@@ -14,6 +14,7 @@ public class Menu {
 			public static final int ELIMINAR_LIBROS=2;
 			public static final int MODIFICAR_LIBROS=3;
 			public static final int VISUALIZAR_LIBROS=4;
+			public static final int BUSCAR_LIBRO=5;
 			
 		//MenuSocio
 			public static final int INSERTAR_SOCIO=1;
@@ -45,6 +46,8 @@ public class Menu {
 		System.out.println(ELIMINAR_LIBROS+"-Eliminar libros");
 		System.out.println(MODIFICAR_LIBROS+"-Modificar libros");
 		System.out.println(VISUALIZAR_LIBROS+"-Visualizar libros");
+		System.out.println(BUSCAR_LIBRO+"-Buscar libro");
+
 
 	}
 	

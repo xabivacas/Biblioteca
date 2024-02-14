@@ -13,4 +13,7 @@ public class Visor {
 		}
 		
 	}
+	public static void mostrarLibro(Libro l) {
+		System.out.println(l);
+	}
 }
