@@ -12,7 +12,7 @@ public class Conector {
 	private static final String USER="root";
 	private static final String PASSWORD="";
 	
-	public static void conectar() {
+	public  void conectar() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/biblioteca";
