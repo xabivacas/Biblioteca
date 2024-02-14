@@ -20,14 +20,18 @@ public class GestorLibros {
 
 		// InsertarLibro
 		case Menu.INSERTAR_LIBRO:
+			
 			gestorBBDD.conectar();
 			gestorBBDD.insertarLibro(FormularioDeDatos.pedirDatosLibro());
 			gestorBBDD.cerrar();
+			
 			break;
 
 		// EliminarLibro
 		case Menu.ELIMINAR_LIBROS:
-			System.out.println("EliminarLibro");
+			gestorBBDD.conectar();
+			gestorBBDD.eliminarLibro(FormularioDeDatos.pedirIdLibro());
+			gestorBBDD.cerrar();
 			break;
 
 		// ModificarLibro

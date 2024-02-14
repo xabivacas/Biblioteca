@@ -21,7 +21,19 @@ public class GestorBBDD extends Conector {
 		
 	}
 	public void eliminarLibro(int id) {
-		//TODO
+		String sql ="DELETE FROM libros WHERE id=?";
+		 
+		try {
+			PreparedStatement pst = cn.prepareStatement(sql);
+			pst.setInt(1, id);
+			
+			pst.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	public Libro getLibro(int id) {
 		//TODO

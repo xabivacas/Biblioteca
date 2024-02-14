@@ -24,11 +24,13 @@ public class FormularioDeDatos {
 	}
 	
 	public static Libro modificarDatosLibro(Libro libro) {
+		
 		return null;
 	}
 	
 	public static int pedirIdLibro() {
-		return 0;
+		System.out.println("Inserte id");
+		return Integer.parseInt(scan.nextLine());
 	}
 	
 }
