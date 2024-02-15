@@ -22,50 +22,27 @@ public class GestorLibros {
 	
 			// InsertarLibro
 			case Menu.INSERTAR_LIBRO:
-				
-				gestorBBDD.conectar();
-				gestorBBDD.insertarLibro(FormularioDeDatos.pedirDatosLibro());
-				gestorBBDD.cerrar();
-				
+				insertarLibro();
 				break;
 	
 			// EliminarLibro
 			case Menu.ELIMINAR_LIBROS:
-				
-				gestorBBDD.conectar();
-				gestorBBDD.eliminarLibro(FormularioDeDatos.pedirId());
-				gestorBBDD.cerrar();
-				
+				eliminarLibro();
 				break;
 	
 			// ModificarLibro
 			case Menu.MODIFICAR_LIBROS:
-				
-				int id=FormularioDeDatos.pedirId();
-				
-				gestorBBDD.conectar();
-				Visor.mostrarObject(gestorBBDD.getLibro(id));
-				
-				gestorBBDD.modificarLibro(id, FormularioDeDatos.pedirDatosLibro());
-				gestorBBDD.cerrar();
+				modificarLibro();			
 				break;
 	
 			// visualizarLibro
 			case Menu.VISUALIZAR_LIBROS:
-				
-				gestorBBDD.conectar();
-				ArrayList<Object> libros = gestorBBDD.getLibros();
-				Visor.mostrarArray(libros);
-				gestorBBDD.cerrar();
-				
+				visualizarLibros();		
 				break;
 				
 			//Buscar un libro en concreto
 			case Menu.BUSCAR_LIBRO:
-				
-				gestorBBDD.conectar();
-				Visor.mostrarObject(gestorBBDD.getLibro(FormularioDeDatos.pedirId()));
-				gestorBBDD.cerrar();
+				buscarLibro();			
 			
 			break;
 			// salir
@@ -75,5 +52,41 @@ public class GestorLibros {
 			}
 		}while(select!=Menu.SALIR);
 	}
+
+	private static void insertarLibro() {
+		gestorBBDD.conectar();
+		gestorBBDD.insertarLibro(FormularioDeDatos.pedirDatosLibro());
+		gestorBBDD.cerrar();
+	}
+	
+	private static void eliminarLibro() {
+		gestorBBDD.conectar();
+		gestorBBDD.eliminarLibro(FormularioDeDatos.pedirId());
+		gestorBBDD.cerrar();
+	}
+	
+	private static void modificarLibro() {
+		int id=FormularioDeDatos.pedirId();
+		
+		gestorBBDD.conectar();
+		Visor.mostrarObject(gestorBBDD.getLibro(id));
+		
+		gestorBBDD.modificarLibro(id, FormularioDeDatos.pedirDatosLibro());
+		gestorBBDD.cerrar();
+	}
+	
+	private static void visualizarLibros() {
+		gestorBBDD.conectar();
+		ArrayList<Object> libros = gestorBBDD.getLibros();
+		Visor.mostrarArray(libros);
+		gestorBBDD.cerrar();
+	}
+	
+	private static void buscarLibro() {
+		gestorBBDD.conectar();
+		Visor.mostrarObject(gestorBBDD.getLibro(FormularioDeDatos.pedirId()));
+		gestorBBDD.cerrar();
+	}
+	
 	
 }

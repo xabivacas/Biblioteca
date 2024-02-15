@@ -25,6 +25,7 @@ public class GestorBBDD extends Conector {
 			}
 			
 		}
+		
 		public void eliminarLibro(int id) {
 			String sql ="DELETE FROM libros WHERE id=?";
 			 
