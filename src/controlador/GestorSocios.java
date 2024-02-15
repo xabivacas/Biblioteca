@@ -14,55 +14,76 @@ public class GestorSocios {
 	public static void run(Scanner scan) {
 	
 	int select;
+	do {
 		
-	Menu.mostrarMenuSocio();
-	select = Integer.parseInt(scan.nextLine());
-
-	switch (select) {
-
-		// InsertarSocio
-		case Menu.INSERTAR_SOCIO:
-			
-			gestorBBDD.conectar();
-			gestorBBDD.insertarSocio(FormularioDeDatos.pedirDatosSocio());
-			gestorBBDD.cerrar();
-			
-			break;
+		Menu.mostrarMenuSocio();
+		select = Integer.parseInt(scan.nextLine());
 	
-		// EliminarSocio
-		case Menu.ELIMINAR_SOCIO:
-			//TODO
-			System.out.println("EliminarSocio");
-			break;
+		switch (select) {
 	
-		// ModificarSocio
-		case Menu.MODIFICAR_SOCIO:
-			//TODO
-			System.out.println("ModificarSocio");
-			break;
-	
-		// visualizarSocio
-		case Menu.VISUALIZAR_SOCIO:
-			
-			gestorBBDD.conectar();
-			Visor.mostrarSocios(gestorBBDD.getSocios());
-			gestorBBDD.cerrar();
-			break;
+			// InsertarSocio
+			case Menu.INSERTAR_SOCIO:
+				insertarSocio();
+				break;
 		
-		//Buscar un socio
-		case Menu.BUSCAR_SOCIO:
+			// EliminarSocio
+			case Menu.ELIMINAR_SOCIO:
+				elimarSocio();
+				
+
+				break;
+		
+			// ModificarSocio
+			case Menu.MODIFICAR_SOCIO:
+				
+				int id= FormularioDeDatos.pedirId();
+				
+				//Pedir un Id y mostrar el socio
+				gestorBBDD.conectar();
+				Visor.mostrarObject(gestorBBDD.getSocio(id));
+				
+				//Con esa Id pedir datos y modificar socio
+				gestorBBDD.modificarSocio(id,FormularioDeDatos.pedirDatosSocio());
+				gestorBBDD.cerrar();
+				
+				break;
+		
+			// visualizarSocio
+			case Menu.VISUALIZAR_SOCIO:
+				
+				gestorBBDD.conectar();
+				Visor.mostrarArray(gestorBBDD.getSocios());
+				gestorBBDD.cerrar();
+				break;
 			
-			gestorBBDD.conectar();
-			Visor.mostrarSocio(gestorBBDD.getSocio(FormularioDeDatos.pedirId()));
-			gestorBBDD.cerrar();
-			
-			break;
-			
-		// salir
-		case Menu.SALIR:
-			System.out.println("");
-			select = 9;
-			break;
-		}
+			//Buscar un socio
+			case Menu.BUSCAR_SOCIO:
+				
+				gestorBBDD.conectar();
+				Visor.mostrarObject(gestorBBDD.getSocio(FormularioDeDatos.pedirId()));
+				gestorBBDD.cerrar();
+				
+				break;
+				
+			// salir
+			case Menu.SALIR:
+				System.out.println("");
+				break;
+			}
+	}while(select!=Menu.SALIR);
 }
+
+	private static void elimarSocio() {
+		gestorBBDD.conectar();
+		gestorBBDD.eliminarSocio(FormularioDeDatos.pedirId());
+		gestorBBDD.cerrar();
+		
+	}
+
+	private static void insertarSocio() {
+		gestorBBDD.conectar();
+		gestorBBDD.insertarSocio(FormularioDeDatos.pedirDatosSocio());
+		gestorBBDD.cerrar();
+		
+	}
 }

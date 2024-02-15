@@ -44,7 +44,8 @@ public class GestorLibros {
 				int id=FormularioDeDatos.pedirId();
 				
 				gestorBBDD.conectar();
-				Visor.mostrarLibro(gestorBBDD.getLibro(id));
+				Visor.mostrarObject(gestorBBDD.getLibro(id));
+				
 				gestorBBDD.modificarLibro(id, FormularioDeDatos.pedirDatosLibro());
 				gestorBBDD.cerrar();
 				break;
@@ -53,8 +54,8 @@ public class GestorLibros {
 			case Menu.VISUALIZAR_LIBROS:
 				
 				gestorBBDD.conectar();
-				ArrayList<Libro> libros = gestorBBDD.getLibros();
-				Visor.mostrarLibros(libros);
+				ArrayList<Object> libros = gestorBBDD.getLibros();
+				Visor.mostrarArray(libros);
 				gestorBBDD.cerrar();
 				
 				break;
@@ -63,7 +64,7 @@ public class GestorLibros {
 			case Menu.BUSCAR_LIBRO:
 				
 				gestorBBDD.conectar();
-				Visor.mostrarLibro(gestorBBDD.getLibro(FormularioDeDatos.pedirId()));
+				Visor.mostrarObject(gestorBBDD.getLibro(FormularioDeDatos.pedirId()));
 				gestorBBDD.cerrar();
 			
 			break;

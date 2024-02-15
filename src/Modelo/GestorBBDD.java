@@ -69,9 +69,9 @@ public class GestorBBDD extends Conector {
 			
 		}
 		
-		public  ArrayList<Libro> getLibros(){
+		public  ArrayList<Object> getLibros(){
 			
-			ArrayList<Libro> libros = new ArrayList<>();
+			ArrayList<Object> libros = new ArrayList<>();
 			String sql= "SELECT * FROM libros";
 			
 			try {
@@ -116,8 +116,8 @@ public class GestorBBDD extends Conector {
 		}
 	
 	//Socios
-		public ArrayList<Socio> getSocios(){
-			ArrayList<Socio> socios = new ArrayList<>();
+		public ArrayList<Object> getSocios(){
+			ArrayList<Object> socios = new ArrayList<>();
 			String sql = "SELECT * FROM socios";
 			
 			try {
@@ -190,6 +190,47 @@ public class GestorBBDD extends Conector {
 				System.out.println("Peto en insertarSocio");
 				e.printStackTrace();
 			}
+		}
+		
+		public void eliminarSocio(int id) {
+			String sql = "DELETE FROM socios WHERE id=?";
+			
+			try {
+				PreparedStatement pst = cn.prepareStatement(sql);
+				
+				pst.setInt(1, id);
+				pst.execute();
+				
+				Visor.gestionTerminada();
+			} catch (SQLException e) {
+				System.out.println("Peto en eliminarSocio");
+				e.printStackTrace();
+			}
+		}
+		
+		public void modificarSocio(int id,Socio s) {
+			//TODO
+			String sql = "UPDATE socios SET nombre=?,apellido=?,direccion=?,poblacion=?,provincia=?,dni=? WHERE id=?";
+			
+			try {
+				PreparedStatement pst = cn.prepareStatement(sql);
+				
+				pst.setString(1, s.getNombre());
+				pst.setString(2, s.getApellido());
+				pst.setString(3, s.getDireccion());
+				pst.setString(4, s.getPoblacion());
+				pst.setString(5, s.getProvincia());
+				pst.setString(6, s.getDni());
+				pst.setInt(7, id);
+				
+				pst.execute();
+				
+				Visor.gestionTerminada();
+			} catch (SQLException e) {
+				System.out.println("Peto en modificarSocio");
+				e.printStackTrace();
+			}
+			
 			
 		}
 	

@@ -6,28 +6,17 @@ import Modelo.*;
 public class Visor {
 
 	//Libros
-	public static void mostrarLibros(ArrayList<Libro> libros) {
-		for (Libro l : libros) {
-			System.out.println(l);
+	public static void mostrarArray(ArrayList<Object> objetos) {
+		for (Object o : objetos) {
+			System.out.println(o);
 		}
 	}
 	
-	public static void mostrarLibro(Libro l) {
-		System.out.println(l);
-	}
-	
-	//Socios
-	public static void mostrarSocios(ArrayList<Socio> socios) {
-		for(Socio s : socios) {
-			System.out.println(s);
-		}
-	}
-	
-	public static void mostrarSocio(Socio s) {
-		System.out.println(s);
+	public static void mostrarObject(Object o) {
+		System.out.println(o);
 	}
 	
 	public static void gestionTerminada() {
-		System.out.println("gestion completada");
+		System.out.println("Gestion completada");
 	}
 }
