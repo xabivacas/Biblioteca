@@ -33,7 +33,7 @@ public class GestorLibros {
 			case Menu.ELIMINAR_LIBROS:
 				
 				gestorBBDD.conectar();
-				gestorBBDD.eliminarLibro(FormularioDeDatos.pedirIdLibro());
+				gestorBBDD.eliminarLibro(FormularioDeDatos.pedirId());
 				gestorBBDD.cerrar();
 				
 				break;
@@ -41,7 +41,7 @@ public class GestorLibros {
 			// ModificarLibro
 			case Menu.MODIFICAR_LIBROS:
 				
-				int id=FormularioDeDatos.pedirIdLibro();
+				int id=FormularioDeDatos.pedirId();
 				
 				gestorBBDD.conectar();
 				Visor.mostrarLibro(gestorBBDD.getLibro(id));
@@ -63,7 +63,7 @@ public class GestorLibros {
 			case Menu.BUSCAR_LIBRO:
 				
 				gestorBBDD.conectar();
-				Visor.mostrarLibro(gestorBBDD.getLibro(FormularioDeDatos.pedirIdLibro()));
+				Visor.mostrarLibro(gestorBBDD.getLibro(FormularioDeDatos.pedirId()));
 				gestorBBDD.cerrar();
 			
 			break;

@@ -2,6 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 import java.sql.*;
+import Vista.*;
 
 public class GestorBBDD extends Conector {
 
@@ -16,6 +17,8 @@ public class GestorBBDD extends Conector {
 				pst.setInt(3, libro.getNum_pag());
 				
 				pst.execute();
+				
+				Visor.gestionTerminada();
 			} catch (SQLException e) {
 				System.out.println("Peto en insertarLibro");
 				e.printStackTrace();
@@ -31,6 +34,7 @@ public class GestorBBDD extends Conector {
 				
 				pst.execute();
 				
+				Visor.gestionTerminada();
 			} catch (SQLException e) {
 				System.out.println("Peto en eliminarLibro");
 				e.printStackTrace();
@@ -104,6 +108,7 @@ public class GestorBBDD extends Conector {
 				
 				pst.execute();
 				
+				Visor.gestionTerminada();
 			} catch (SQLException e) {
 				System.out.println("Peto en modificarLibro");
 				e.printStackTrace();
@@ -139,6 +144,53 @@ public class GestorBBDD extends Conector {
 			
 			
 			return socios;
+		}
+		public Socio getSocio(int id) {
+			Socio s = new Socio();
+			String sql= "SELECT * FROM socios WHERE id=?";
+			
+			try {
+				PreparedStatement pst = cn.prepareStatement(sql);
+				pst.setInt(1, id);
+				
+				ResultSet rs = pst.executeQuery();
+				
+				rs.next();
+				s.setId(rs.getInt("id"));
+				s.setNombre(rs.getString("nombre"));
+				s.setApellido(rs.getString("apellido"));
+				s.setDireccion(rs.getString("direccion"));
+				s.setDni(rs.getString("dni"));
+				s.setPoblacion(rs.getString("poblacion"));
+				s.setProvincia(rs.getString("provincia"));
+				
+			} catch (SQLException e) {
+				System.out.println("Peto en getSocio");
+				e.printStackTrace();
+			}
+			return s;
+		}
+		
+		public void insertarSocio(Socio s) {
+			String sql ="INSERT INTO socios (nombre,apellido,direccion,dni,poblacion,provincia) VALUES (?,?,?,?,?,?) ";
+			
+			try {
+				PreparedStatement pst = cn.prepareStatement(sql);
+				pst.setString(1, s.getNombre());
+				pst.setString(2, s.getApellido());
+				pst.setString(3, s.getDireccion());
+				pst.setString(4, s.getDni());
+				pst.setString(5, s.getPoblacion());
+				pst.setString(6, s.getProvincia());
+				
+				pst.execute();
+				
+				Visor.gestionTerminada();
+			} catch (SQLException e) {
+				System.out.println("Peto en insertarSocio");
+				e.printStackTrace();
+			}
+			
 		}
 	
 }

@@ -21,6 +21,7 @@ public class Menu {
 			public static final int ELIMINAR_SOCIO=2;
 			public static final int MODIFICAR_SOCIO=3;
 			public static final int VISUALIZAR_SOCIO=4;
+			public static final int BUSCAR_SOCIO=5;
 			
 		//MenuPrestamo
 			public static final int INSERTAR_PRESTAMO=1;
@@ -59,6 +60,7 @@ public class Menu {
 		System.out.println(ELIMINAR_SOCIO+"-Eliminar Socio");
 		System.out.println(MODIFICAR_SOCIO+"-Modificar Socio");
 		System.out.println(VISUALIZAR_SOCIO+"-Visualizar Socio");
+		System.out.println(BUSCAR_SOCIO+"-Buscar Socio");
 	}
 	
 	public static void mostrarMenuPrestamo() {
