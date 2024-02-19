@@ -38,37 +38,7 @@ public class GestorBiblioteca {
 
 			// Enseñar menuPrestamo
 			case Menu.GESTIONAR_PRESTAMOS:
-				Vista.Menu.mostrarMenuPrestamo();
-				select = Integer.parseInt(scan.nextLine());
-
-				switch (select) {
-
-				// Insertarprestamo
-				case Menu.INSERTAR_PRESTAMO:
-					System.out.println("Insertarprestamo");
-					break;
-
-				// EliminarPrestamo
-				case Menu.ELIMINAR_PRESTAMO:
-					System.out.println("EliminarPrestamo");
-					break;
-
-				// ModificarPrestamo
-				case Menu.MODIFICAR_PRESTAMO:
-					System.out.println("ModificarPrestamo");
-					break;
-
-				// visualizarPrestamo
-				case Menu.VISUALIZAR_PRESTAMO:
-					System.out.println("visualizarPrestamo");
-					break;
-
-				// salir
-				case Menu.SALIR:
-					System.out.println("");
-					select = 9;
-					break;
-				}
+				GestorPrestamos.run(scan);
 				break;
 
 			// Salir

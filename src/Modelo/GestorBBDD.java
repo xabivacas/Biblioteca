@@ -210,7 +210,6 @@ public class GestorBBDD extends Conector {
 		}
 		
 		public void modificarSocio(int id,Socio s) {
-			//TODO
 			String sql = "UPDATE socios SET nombre=?,apellido=?,direccion=?,poblacion=?,provincia=?,dni=? WHERE id=?";
 			
 			try {
@@ -230,9 +229,27 @@ public class GestorBBDD extends Conector {
 			} catch (SQLException e) {
 				System.out.println("Peto en modificarSocio");
 				e.printStackTrace();
-			}
-			
-			
+			}		
 		}
-	
+		
+		public void insertarPrestamo(Prestamo p) {
+			Date fecha= new Date(p.getFecha().getTime());
+			String sql = "INSERT INTO prestamos (id_libro,id_socio,fecha,devuelto) VALUES (?,?,?,?)";
+			try {
+				PreparedStatement pst = cn.prepareStatement(sql);
+				
+				pst.setInt(1, p.getLibro().getId());
+				pst.setInt(2, p.getSocio().getId());
+				pst.setDate(3,fecha);
+				pst.setBoolean(4, p.isDevuelto());
+				
+				pst.execute();
+				
+			}catch (SQLException e) {
+				System.out.println("Peto en modificarSocio");
+				e.printStackTrace();
+			}	
+		}
+		
+		
 }

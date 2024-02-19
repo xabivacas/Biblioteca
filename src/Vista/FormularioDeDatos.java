@@ -1,5 +1,7 @@
 package Vista;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 import Modelo.*;
@@ -52,5 +54,35 @@ public class FormularioDeDatos {
 		s.setDni(scan.nextLine());
 		
 		return s;
+	}
+	
+	public static Prestamo pedirDatosPrestamo() {
+		GestorBBDD gestor = new GestorBBDD();
+		SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
+		Prestamo p = new Prestamo();
+		gestor.conectar();
+		
+		System.out.println("\n---------------------------");
+		System.out.println("Id libro:");
+		p.setLibro(gestor.getLibro(Integer.parseInt(scan.nextLine())));
+		
+		System.out.println("Id socio:");
+		p.setSocio(gestor.getSocio(Integer.parseInt(scan.nextLine())));
+		
+		try {
+			System.out.println("Fecha (yyyy-MM-dd):");
+			p.setFecha(sdf.parse(scan.nextLine()));
+		} catch (ParseException e) {
+			System.out.println("Fecha erronea");
+			e.printStackTrace();
+		}
+		
+		System.out.println("Lo ha devuelto? s/n");
+		if (scan.nextLine().equalsIgnoreCase("S")) {
+			p.setDevuelto(true);
+		}else {
+			p.setDevuelto(false);
+		}
+		return p;
 	}
 }
