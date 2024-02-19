@@ -250,6 +250,29 @@ public class GestorBBDD extends Conector {
 				e.printStackTrace();
 			}	
 		}
-		
+		public ArrayList<Object> visualizarPrestamos(){
+			ArrayList<Object> prestamos = new ArrayList<>();
+			String sql = "SELECT * FROM prestamos WHERE devuelto=0";
+			try {
+				Statement st = cn.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				
+				while(rs.next()) {
+					Prestamo p = new Prestamo();
+					p.setLibro(getLibro(rs.getInt("id_socio")));
+					p.setSocio(getSocio(rs.getInt("id_socio")));
+					p.setFecha(rs.getDate("fecha"));
+					p.setDevuelto(rs.getBoolean("devuelto"));
+					
+					prestamos.add(p);
+				}
+			} catch (SQLException e) {
+				System.out.println("Peto en visualizar Prestamos");
+				e.printStackTrace();
+			}
+			
+			
+			return prestamos;
+		}
 		
 }

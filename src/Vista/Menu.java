@@ -65,7 +65,7 @@ public class Menu {
 	
 	public static void mostrarMenuPrestamo() {
 		
-		System.out.println("\n----Menu Socio----");
+		System.out.println("\n----Menu Prestamo----");
 		System.out.println(SALIR+"-Salir");
 		System.out.println(INSERTAR_PRESTAMO+"-Insertar prestamo");
 		System.out.println(ELIMINAR_PRESTAMO+"-Eliminar prestamo");

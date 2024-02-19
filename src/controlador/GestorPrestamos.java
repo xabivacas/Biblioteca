@@ -20,9 +20,9 @@ public class GestorPrestamos {
 
 		// Insertarprestamo
 		case Menu.INSERTAR_PRESTAMO:
-			//TODO
-			System.out.println("Insertarprestamo");
+			gestorBBDD.conectar();
 			gestorBBDD.insertarPrestamo(FormularioDeDatos.pedirDatosPrestamo());
+			gestorBBDD.cerrar();
 			break;
 
 		// EliminarPrestamo
@@ -41,6 +41,8 @@ public class GestorPrestamos {
 		case Menu.VISUALIZAR_PRESTAMO:
 			//TODO
 			System.out.println("visualizarPrestamo");
+			gestorBBDD.conectar();
+			Visor.mostrarArray(gestorBBDD.visualizarPrestamos());
 			break;
 
 		// salir
